@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Markdown Previewer</title>
+
+    <script src="./js/marked.js"></script>
+    <script>
+      function updatePreview(){
+        let previewElement = document.getElementById("preview");
+        let editorValue = document.getElementById("editor").value;
+        let markedUpHTML = marked.parse(editorValue);
+        previewElement.innerHTML = markedUpHTML;
+      }
+
+    function setDefault() {
+        let defaultText = `\
+# This is the Header
+
+## This is the sub header
+[This is a Link](http://www.UsefulProgrammer.org).
+
+\`This is an example of inline code\`
+
+\`\`\`
+function exampleOf(){
+  return multilineCodeBlock;
+}
+\`\`\`
+
+- This
+- Is an Example
+- of List Items
+
+> This is a blockquote
+
+Here is a line of text
+And another line
+
+![This is an image](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+**Bolded Text**
+
+        `;
+        let editorField = document.getElementById("editor");
+        let previewElement = document.getElementById("preview");
+        editorField.value = defaultText;
+        previewElement.innerHTML = marked.parse(defaultText);
+      }
+
+    </script>
+
+
+  </head>
+  <body onload="setDefault()" class="bg-success">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col text-center text-white bg-success my-3">
+          <h1>Markdown Previewer by Jboz</h1>
+        </div>
+      </div>
+    <div class="row">
+        <div class="col-6 bg-primary">
+          <h2 class="text-white text-center my-3">Editor</h2>
+          <div class="form-group">
+          <textarea id="editor" onkeyup="updatePreview()" class="form-control" style="height: 100vh"></textarea>
+        </div>
+          </div>
+        <div class="col-6 bg-secondary">
+          <h2 class="text-white text-center my-3">Previewer</h2>
+          <div id="preview">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
